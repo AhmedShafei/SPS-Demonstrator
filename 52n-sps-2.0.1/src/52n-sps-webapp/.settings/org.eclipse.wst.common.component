@@ -19,7 +19,7 @@
         <dependent-module archiveName="52n-sps-hibernate-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/52n-sps-hibernate/52n-sps-hibernate">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="52n-sps-wamplugin-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/52n-sps-testplugin/52n-sps-testplugin">
+        <dependent-module archiveName="52n-sps-testplugin-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/52n-sps-testplugin/52n-sps-testplugin">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="52n-sps-wosplugin-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/52n-sps-wosplugin/52n-sps-wosplugin">
