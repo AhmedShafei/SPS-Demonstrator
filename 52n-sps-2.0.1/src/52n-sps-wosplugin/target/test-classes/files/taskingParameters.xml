@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<swe:DataRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:swe="http://www.opengis.net/swe/2.0" xsi:schemaLocation="http://www.opengis.net/swe/2.0 http://schemas.opengis.net/sweCommon/2.0/swe.xsd">
+	<swe:field name="pumpId">
+		<swe:Text />
+	</swe:field>
+	<swe:field name="stationId">
+		<swe:Text />
+	</swe:field>
+	<swe:field name="energyConsumption">
+		<swe:Quantity>
+			<swe:uom code="J" />
+		</swe:Quantity>
+	</swe:field>
+	<swe:field name="energyCost">
+		<swe:Text />
+	</swe:field>
+	<swe:field name="pumpSchedule">
+		<swe:DataArray definition="http://sweet.jpl.nasa.gov/2.0/info.owl#TimeSeries">
+			<swe:description>Array of pump schedule</swe:description>
+			<swe:elementCount>
+				<swe:Count />
+			</swe:elementCount>
+			<swe:elementType name="pump_schedule">
+				<swe:DataRecord>
+					<swe:field name="time">
+						<swe:Time definition="http://www.opengis.net/def/property/OGC/0/SamplingTime">
+							<swe:label>Sampling Time</swe:label>
+							<swe:uom xlink:href="http://www.opengis.net/def/uom/ISO-8601/0/Gregorian" />
+						</swe:Time>
+					</swe:field>
+					<swe:field name="state">
+						<swe:Quantity>
+							<swe:uom code="ratio" />
+						</swe:Quantity>
+					</swe:field>
+				</swe:DataRecord>
+			</swe:elementType>
+			<swe:encoding>
+				<swe:TextEncoding blockSeparator="%%"
+					tokenSeparator=";" />
+			</swe:encoding>
+		</swe:DataArray>
+	</swe:field>
+</swe:DataRecord>

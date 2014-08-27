@@ -1,0 +1,15 @@
+<sps:Submit service="SPS" version="2.0.0" xmlns:sps="http://www.opengis.net/sps/2.0" xmlns:swe="http://www.opengis.net/swe/2.0">
+	<sps:procedure>1</sps:procedure>
+	<sps:taskingParameters>
+		<sps:ParameterData>
+			<sps:encoding>
+				<swe:TextEncoding tokenSeparator=","
+					blockSeparator="@@"></swe:TextEncoding>
+			</sps:encoding>
+			<!-- [idAsset(Text)], [idMaintenancePlan(Count)], [plannedDate(Time)], 
+				[dueDate(Time)], [status(Text)],[typeOfMaintenance(Ordinary,Emergency)] -->
+			<sps:values>125478,12547,2014-02-25T00:00:00.000+01:00,2014-02-25T00:00:00.000+01:00,Planned,Ordinary
+			</sps:values>
+		</sps:ParameterData>
+	</sps:taskingParameters>
+</sps:Submit>

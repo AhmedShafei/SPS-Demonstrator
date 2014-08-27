@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Implementation-Title: 52North SPS Hibernate
+Implementation-Revision: 
+Implementation-Version: 2.0.1
+Built-By: z003bmbd
+Implementation-Vendor-Id: org.n52.sensorweb
+Class-Path: 52n-xml-sps-v20-1.1.4.jar xmlbeans-2.5.0.jar stax-api-1.0.
+ 1.jar 52n-xml-sweCommon-v20-1.1.4.jar 52n-xml-xlink-v110-1.1.4.jar 52
+ n-xml-swes-v20-1.1.4.jar 52n-xml-gml-v321-1.1.4.jar 52n-xml-ows-v110-
+ 1.1.4.jar 52n-xml-wsa-v10-1.1.4.jar 52n-xml-wsn-v13-1.1.4.jar 52n-xml
+ -wsrf-v12-1.1.4.jar 52n-sps-api-2.0.1.jar 52n-sps-api-xml-2.0.1.jar 5
+ 2n-oxf-ows-v110-1.12.jar 52n-oxf-swes-v20-1.12.jar 52n-oxf-xmlbeans-1
+ .12.jar httpclient-4.1.1.jar httpcore-4.1.jar commons-codec-1.4.jar j
+ oda-time-2.1.jar spring-orm-3.0.5.RELEASE.jar spring-beans-3.0.5.RELE
+ ASE.jar spring-core-3.0.5.RELEASE.jar spring-asm-3.0.5.RELEASE.jar co
+ mmons-logging-1.1.1.jar spring-jdbc-3.0.5.RELEASE.jar spring-tx-3.0.5
+ .RELEASE.jar aopalliance-1.0.jar spring-aop-3.0.5.RELEASE.jar spring-
+ context-3.0.5.RELEASE.jar spring-expression-3.0.5.RELEASE.jar hiberna
+ te-core-3.6.10.Final.jar antlr-2.7.6.jar commons-collections-3.1.jar 
+ dom4j-1.6.1.jar hibernate-commons-annotations-3.2.0.Final.jar hiberna
+ te-jpa-2.0-api-1.0.1.Final.jar jta-1.1.jar slf4j-api-1.6.4.jar
+Build-Jdk: 1.8.0_05
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: 52north.org
+

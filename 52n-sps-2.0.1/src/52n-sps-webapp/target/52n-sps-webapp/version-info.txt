@@ -1,0 +1,14 @@
+General Infos:
+==============
+project = 52North SPS Reference Implementation (52n-sps-webapp)
+version = 2.0.1
+builddate = 20140825-1506
+
+Subversion Infos:
+=================
+repository = ${svn.info.repository}
+path = ${svn.info.path}
+revision = ${svn.info.revision}
+mixedRevisions = ${svn.info.mixedRevisions}
+committedRevision = ${svn.info.committedRevision}
+committedDate = ${svn.info.committedDate}

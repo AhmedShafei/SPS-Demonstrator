@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<swe:DataRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:swe="http://www.opengis.net/swe/2.0" xsi:schemaLocation="http://www.opengis.net/swe/2.0 http://schemas.opengis.net/sweCommon/2.0/swe.xsd">
+	<swe:field name="idAsset">
+		<swe:Text />
+	</swe:field>
+	<swe:field name="idMaintenancePlan">
+		<swe:Count />
+	</swe:field>
+	<swe:field name="plannedDate">
+		<swe:Time>
+			<swe:uom xlink:href="http://www.opengis.net/def/uom/ISO-8601/0/Gregorian" />
+		</swe:Time>
+	</swe:field>
+	<swe:field name="dueDate">
+		<swe:Time>
+			<swe:uom xlink:href="http://www.opengis.net/def/uom/ISO-8601/0/Gregorian" />
+		</swe:Time>
+	</swe:field>
+	<swe:field name="status">
+		<swe:Text />
+	</swe:field>
+	<swe:field name="typeOfMaintenance">
+		<swe:Category>
+			<swe:constraint>
+				<swe:AllowedTokens>
+					<swe:value>Ordinary</swe:value>
+					<swe:value>Emergency</swe:value>
+				</swe:AllowedTokens>
+			</swe:constraint>
+		</swe:Category>
+	</swe:field>
+</swe:DataRecord>

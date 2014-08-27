@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<display-name>52n-sps-webapp webapp (build: 20140825-1506)</display-name>
+
+	<!-- listen for spring related configuration files -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/spring-*-config.xml</param-value>
+	</context-param>
+
+
+	<!-- define WEB MVC communication servlet for Rest -->
+	<servlet>
+		<servlet-name>rest</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/classes/binding-rest.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>rest</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+
+	<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>>52°North SPS Administration Interface.</realm-name>
+	</login-config>
+
+	<security-role>
+		<role-name>manager</role-name>
+	</security-role>
+
+
+	<!-- landing page -->
+	<welcome-file-list>
+		<welcome-file>testClient-SPSv2.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>

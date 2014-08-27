@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ows:ServiceProvider xmlns:ows="http://www.opengis.net/ows/1.1"
+	xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsServiceProvider.xsd">
+	<ows:ProviderName>52north</ows:ProviderName>
+	<ows:ProviderSite xlink:href="http://52north.org" />
+	<ows:ServiceContact>
+		<ows:IndividualName>Ahmed Shafei</ows:IndividualName>
+		<ows:PositionName>Software Developer</ows:PositionName>
+		<ows:ContactInfo>
+			<ows:Phone>
+				<ows:Voice>+4917672649256</ows:Voice>
+			</ows:Phone>
+			<ows:Address>
+				<ows:DeliveryPoint>Otto-Hahn-Ring 6</ows:DeliveryPoint>
+				<ows:City>Muenchen</ows:City>
+				<ows:AdministrativeArea>Bavaria</ows:AdministrativeArea>
+				<ows:PostalCode>81739</ows:PostalCode>
+				<ows:Country>
+					Germany
+				</ows:Country>
+				<ows:ElectronicMailAddress>Ahmed.Shafei@siemens.com</ows:ElectronicMailAddress>
+				<ows:ElectronicMailAddress>swe@52north.org</ows:ElectronicMailAddress>
+			</ows:Address>
+			<ows:OnlineResource xlink:href="http://52north.org"
+				xlink:title="website" />
+		</ows:ContactInfo>
+		<ows:Role>REST Interfaces and SPS Gateway Adapter Implementor</ows:Role>
+	</ows:ServiceContact>
+</ows:ServiceProvider>

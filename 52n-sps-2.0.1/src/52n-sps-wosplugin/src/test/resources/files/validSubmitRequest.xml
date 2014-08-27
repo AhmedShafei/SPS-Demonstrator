@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sps:Submit version="2.0.0" service="SPS"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:sps="http://www.opengis.net/sps/2.0"
+	xsi:schemaLocation="http://www.opengis.net/sps/2.0 http://schemas.opengis.net/sps/2.0/sps.xsd">
+	<sps:procedure>1</sps:procedure>
+	<sps:taskingParameters>
+		<sps:ParameterData xmlns:swe="http://www.opengis.net/swe/2.0">
+			<sps:encoding>
+				<swe:TextEncoding tokenSeparator=","
+					blockSeparator="@@"></swe:TextEncoding>
+			</sps:encoding>
+			<!-- [pumpId(Text)],[stationId(Text)], [energyConsumption(Quantity)], 
+				[energyCost(Text)], [pumpSchedule(Time,Text)] -->
+			<sps:values>Pump_P27,PumpStation_st03,357.91,70.25,2013-09-01T00:00:00.000+01:00;1%%2013-09-30T00:00:00.000+01:00;0%%2013-09-15T00:00:00.000+01:00;0.3
+			</sps:values>
+		</sps:ParameterData>
+	</sps:taskingParameters>
+</sps:Submit>
