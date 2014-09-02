@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.n52.sps.service.core.SensorInstanceProviderTest
 -------------------------------------------------------------------------------
-Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.414 sec
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.396 sec

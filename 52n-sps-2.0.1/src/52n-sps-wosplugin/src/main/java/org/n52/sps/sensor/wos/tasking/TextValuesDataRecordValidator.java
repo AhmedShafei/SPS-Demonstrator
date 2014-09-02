@@ -7,11 +7,17 @@ package org.n52.sps.sensor.wos.tasking;
 
 import java.util.Arrays;
 
+import net.opengis.swe.x20.AbstractDataComponentType;
+import net.opengis.swe.x20.CategoryType;
+import net.opengis.swe.x20.CountType;
 import net.opengis.swe.x20.DataArrayType;
 import net.opengis.swe.x20.DataRecordType;
 import net.opengis.swe.x20.DataRecordType.Field;
 import net.opengis.swe.x20.QuantityType;
 import net.opengis.swe.x20.TextType;
+import net.opengis.swe.x20.TimeType;
+import net.opengis.swe.x20.VectorType;
+import net.opengis.swe.x20.VectorType.Coordinate;
 
 import org.n52.ows.exception.InvalidParameterValueException;
 import org.n52.sps.tasking.TaskingRequest;
@@ -79,23 +85,25 @@ public class TextValuesDataRecordValidator {
 		LOGGER.debug("template: {}", template);
 		int valueIdx = 0;
 		for (Field field : template.getFieldArray()) {
-			ParameterField parameterField = ParameterField.getField(field);
 			if (isOptional(field)) {
 				String value = block[valueIdx];
 				if (isSetOptionalValue(value)) {
-					String[] parameters = parseParameterValues(parameterField,
-							block, ++valueIdx);
+					String[] parameters = parseParameterValues(block,
+							++valueIdx);
 					validateAndSet(field, parameters, validData);
-					valueIdx += parameterField.getLength();
+					// Fix parameterField length to 1, since we no more have
+					// dependency on parameterField
+					valueIdx += 1;
 				} else {
 					// skip 'N' value
 					++valueIdx;
 				}
 			} else {
-				String[] parameters = parseParameterValues(parameterField,
-						block, valueIdx);
+				String[] parameters = parseParameterValues(block, valueIdx);
 				validateAndSet(field, parameters, validData);
-				valueIdx += parameterField.getLength();
+				// Fix parameterField length to 1, since we no more have
+				// dependency on parameterField
+				valueIdx += 1;
 			}
 		}
 		return validData;
@@ -109,46 +117,60 @@ public class TextValuesDataRecordValidator {
 		return "Y".equals(value);
 	}
 
-	private String[] parseParameterValues(ParameterField parameterField,
-			String[] block, int valueIdx) {
-		if (parameterField != null) {
-			int offset = parameterField.getLength();
-			return Arrays.copyOfRange(block, valueIdx, valueIdx + offset);
-		}
-		return new String[0];
+	private String[] parseParameterValues(String[] block, int valueIdx) {
+		// Since we have all the Fields of length 1, fix the length offset
+		// to 1 and remove the parameterField dependency
+		int offset = 1;
+		return Arrays.copyOfRange(block, valueIdx, valueIdx + offset);
 	}
 
 	private void validateAndSet(Field field, String[] parameters,
 			DataRecordType validData) throws InvalidParameterValueException {
 		try {
-			String name = field.getName();
+			AbstractDataComponentType type = field.getAbstractDataComponent();
 			String value = parameters[0];
-			if (name.equalsIgnoreCase(ParameterField.PUMP_ID.getFieldName())) {
-				TextType textToSet = validator.validateText(field, value);
-				validData.addNewField().setAbstractDataComponent(textToSet);
-			} else if (name.equalsIgnoreCase(ParameterField.STATION_ID
-					.getFieldName())) {
-				TextType textToSet = validator.validateText(field, value);
-				validData.addNewField().setAbstractDataComponent(textToSet);
-			} else if (name.equalsIgnoreCase(ParameterField.ENERGY_CONSUMPTION
-					.getFieldName())) {
+			if (type instanceof QuantityType) {
 				QuantityType quantityToSet = validator.validateQuantity(field,
 						value);
 				validData.addNewField().setAbstractDataComponent(quantityToSet);
-			} else if (name.equalsIgnoreCase(ParameterField.ENERGY_COST
-					.getFieldName())) {
-				TextType textToSet = validator.validateText(field, value);
-				validData.addNewField().setAbstractDataComponent(textToSet);
-			} else if (name.equalsIgnoreCase(ParameterField.PUMP_SCHEDULE
-					.getFieldName())) {
+			} else if (type instanceof VectorType) {
+				VectorType vectorValue = create2DQuantityVector(parameters);
+				VectorType vectorTypeToSet = validator.validateQuantityVector(
+						field, vectorValue);
+				validData.addNewField().setAbstractDataComponent(
+						vectorTypeToSet);
+			} else if (type instanceof CountType) {
+				CountType countToSet = validator.validateCount(field, value);
+				validData.addNewField().setAbstractDataComponent(countToSet);
+			} else if (type instanceof TimeType) {
+				TimeType timeToSet = validator.validateTime(field, value);
+				validData.addNewField().setAbstractDataComponent(timeToSet);
+			} else if (type instanceof CategoryType) {
+				CategoryType categoryToSet = validator.validateCategory(field,
+						value);
+				validData.addNewField().setAbstractDataComponent(categoryToSet);
+			} else if (type instanceof DataArrayType) {
 				DataArrayType dataArrayToSet = validator.validateDataArray(
 						field, value);
 				validData.addNewField()
 						.setAbstractDataComponent(dataArrayToSet);
+			} else if (type instanceof TextType) {
+				TextType textToSet = validator.validateText(field, value);
+				validData.addNewField().setAbstractDataComponent(textToSet);
 			}
+
 		} catch (InvalidComponentException e) {
 			LOGGER.warn("Invalid component type.", e);
 			throw new InvalidParameterValueException("taskingParameters");
 		}
+	}
+
+	private VectorType create2DQuantityVector(String[] parameters) {
+		VectorType vector = VectorType.Factory.newInstance();
+		for (String parameter : parameters) {
+			Coordinate coordinate = vector.addNewCoordinate();
+			coordinate.addNewQuantity().setValue(Double.parseDouble(parameter));
+		}
+		return vector;
 	}
 }
