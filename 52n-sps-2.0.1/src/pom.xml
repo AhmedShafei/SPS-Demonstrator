@@ -32,7 +32,6 @@
 		<module>52n-sps-hibernate</module>
 		<module>52n-sps-testplugin</module>
 		<!-- ### A.S ### -->
-		<module>52n-sps-wamplugin</module>
 		<module>52n-sps-wosplugin</module>
 	</modules>
 	<scm>

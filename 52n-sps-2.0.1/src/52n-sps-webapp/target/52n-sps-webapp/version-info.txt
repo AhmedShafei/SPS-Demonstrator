@@ -2,7 +2,7 @@ General Infos:
 ==============
 project = 52North SPS Reference Implementation (52n-sps-webapp)
 version = 2.0.1
-builddate = 20140828-1355
+builddate = 20141114-1543
 
 Subversion Infos:
 =================

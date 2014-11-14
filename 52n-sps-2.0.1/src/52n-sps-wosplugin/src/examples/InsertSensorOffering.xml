@@ -20,7 +20,7 @@
 	</n52sps:SensorOfferingData>
 	<n52sps:SensorInstanceData>
 		<n52sps:Procedure>1</n52sps:Procedure>
-		<n52sps:SensorPluginType>WosPumpSensor</n52sps:SensorPluginType>
+		<n52sps:SensorPluginType>demonstratorActuator</n52sps:SensorPluginType>
 		<ows:Reference xlink:href="http://localhost:8080/sos/rest" xlink:role="http://www.opengis.net/spec/SPS/2.0/referenceType/FullServiceAccess" xlink:title="Sensor Observation Service" xmlns:xlink="http://www.w3.org/1999/xlink">
 			<ows:Identifier/>
 			<ows:Abstract xml:lang="en">SOS Data service endpoint for WOS
@@ -35,7 +35,7 @@
 	</n52sps:SensorInstanceData>
 	<n52sps:SensorDescriptionData>
 		<n52sps:ProcedureDescriptionFormat>http://www.opengis.net/sensorML/1.0.1</n52sps:ProcedureDescriptionFormat>
-		<n52sps:DownloadLink>http://localhost:8080/sps/sml/WosPumpSensor/1.xml</n52sps:DownloadLink>
+		<n52sps:DownloadLink>http://localhost:8080/sps/sml/demonstratorActuator/1.xml</n52sps:DownloadLink>
 	</n52sps:SensorDescriptionData>
 	<n52sps:SensorTaskingParametersSet>
 		<n52sps:SingleParameterSet>
