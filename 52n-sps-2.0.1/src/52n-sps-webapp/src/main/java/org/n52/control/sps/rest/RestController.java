@@ -23,6 +23,8 @@ import org.n52.ows.service.parameter.KeyValuePairParameter;
 import org.n52.router.sps.RestRouter;
 import org.n52.sps.service.InternalServiceException;
 import org.n52.sps.service.SensorPlanningService;
+import org.n52.sps.service.adapter.BasicSensorPlannerRESTAdapter;
+import org.n52.sps.service.adapter.BasicSensorPlannerRESTAdapterImpl;
 import org.n52.sps.service.adapter.RestURIConstant;
 import org.n52.sps.service.core.BasicSensorPlanner;
 import org.n52.sps.service.core.SensorProvider;
@@ -211,8 +213,17 @@ public class RestController extends ServiceController {
 			// Create SubmitResponseDocument
 			StatusReportDocument gatewayStatusReportResponse = (StatusReportDocument) gatewayRestRouter
 					.getXmlResponse();
-			submitResponseDocument = createSubmitResponseDocument(
-					spsSubmitResponseDocument, gatewayStatusReportResponse);
+			BasicSensorPlannerRESTAdapter basicSensorPlannerRESTAdapter = new BasicSensorPlannerRESTAdapterImpl(
+					service.getBasicSensorPlanner());
+			try {
+				basicSensorPlannerRESTAdapter
+						.updateSensorTaskStatus(gatewayStatusReportResponse);
+				submitResponseDocument = createSubmitResponseDocument(
+						spsSubmitResponseDocument, gatewayStatusReportResponse);
+			} catch (OwsException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		gatewayRestRouter.addResponseToMAV(submitResponseDocument);
 		return createResponse(gatewayRestRouter);

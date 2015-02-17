@@ -44,7 +44,7 @@ public class GatewayAdapterImpl implements GatewayAdapter {
 	public XmlObject submit(SubmitDocument submit) throws XmlException {
 		httpEntity = new HttpEntity<String>(submit.xmlText(), headers);
 		ResponseEntity<String> response = restTemplate.exchange(
-				spsAdapterBaseURL + "/tasks", HttpMethod.POST, httpEntity,
+				spsAdapterBaseURL + "/task", HttpMethod.POST, httpEntity,
 				String.class);
 		return XmlObject.Factory.parse(response.getBody());
 	}

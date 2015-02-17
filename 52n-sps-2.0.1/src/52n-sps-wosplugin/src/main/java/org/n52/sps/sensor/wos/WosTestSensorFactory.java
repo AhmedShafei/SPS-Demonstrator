@@ -20,7 +20,7 @@ public class WosTestSensorFactory implements SensorInstanceFactory {
 	}
 
 	public String getPluginType() {
-		return "WosPumpSensor";
+		return "demonstratorActuator";
 	}
 
 }
